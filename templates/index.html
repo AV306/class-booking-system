@@ -1,0 +1,47 @@
+<!-- Jinja2 Template -->
+<!DOCTYPE html>
+<html lang=en>
+  <meta charset="utf-8">
+
+	<head>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<title>2J Booking System</title>
+	<head>
+	
+	<body>
+		<script src="script.js"></script>
+		
+		<header>
+			<h1>2J Booking System</h1>
+		</header>
+		
+		<div id="inputs">
+			<form action="/" method="post" enctype="multipart/form-data">
+				<select name="name_input" id="name_input">
+                    <option value="Addison Ang">Addison Ang</option>
+                </select>
+
+				<select name="reason_input" id="reason_input">
+					<option value="iPad Misuse">iPad Misuse</option>
+					<option value="Other">Other</option>
+				</select>
+
+				<input name="details_input" id="details_input" type="text" placeholder="Details..."></input>
+
+				<br>
+
+                <label for="password_input">Authentication</label>
+				<input name="password_input" id="password_input" type="password" value=""></input>
+				
+				<button id="submit" type="submit">Submit</button>
+			</form>
+
+			<br>
+			<br>
+
+			{% if auth %}
+			<label>Success!</label>
+			{% endif %}
+		</div>
+	</body>
+</html> 

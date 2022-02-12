@@ -1,0 +1,6 @@
+# replit
+.replit
+
+# python
+venv/
+__pycache__/
