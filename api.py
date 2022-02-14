@@ -1,21 +1,34 @@
 import json;
 from flask import render_template;
+from numpy import inf;
 
 def retrieve( args ):
 	"""Retrieve data from the sever."""
 	# args is a multi_dict :(
-	query = args.get('query', ''); # try to get query type
-	name = args.get('name', ''); # try to get the name of person
-	number = args.get('max', ''); # try to get the max number of data units
+	name = str(args.get('name', '')).lower(); # try to get the name of person
+	number = 0;
 
+	try:
+		number = int(args.get('max', '')); # try to get the max number of data units (May throw exception)
+	except ValueError:
+		number = -1; # -1 tells it to do everything
+
+	data = {"total": 0, "returned": 0, "data":[]};
 	with open( "records.nsj", "r" ) as records:
-		data = {"total": 0, "data": []};
+		for line in records: # fill the dict
+			
+			linedata = json.loads( line.strip() ); # parse data to dict
 
-		for line in records:
+			if name in linedata['name'].lower():
+				# check if the line is for the given person
+				data['data'].append( linedata );
+				data['returned'] += 1;
+
 			data['total'] += 1;
-			data['data'].append( json.loads(line) );
 
-		return data;
+	return data;
+
+						
 
 
 def send( name, reason, details, password ):
