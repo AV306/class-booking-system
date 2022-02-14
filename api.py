@@ -20,7 +20,10 @@ def retrieve( args ):
 
 def send( name, reason, details, password ):
 	"""Send data to the server."""
-	if password == "test": # NOT SECURE TODO: Implement hashing
+	with open( "secrets.json", "r" ) as secrets:
+		secret = json.load( secrets )['password'];
+		
+	if password == secret: # NOT SECURE TODO: Implement hashing
 		with open( "records.nsj", "a" ) as records:
 			records.write( json.dumps({"name": name, "reason": reason, "details": details}) + "\n" );
 

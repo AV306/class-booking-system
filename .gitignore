@@ -4,3 +4,9 @@
 # python
 venv/
 __pycache__/
+
+# secrets
+secrets.json
+
+# data
+records.nsj
