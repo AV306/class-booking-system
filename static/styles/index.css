@@ -5,10 +5,10 @@ header > h1 {
 
 form > label[for="password_input"] {
 	font-family: Verdana;
-	font-size: 12px;
+	font-size: 14px;
 }
 
 p[id="success"] {
 	font-family: Verdana;
-	font-size: 12px;
+	font-size: 14px;
 }
