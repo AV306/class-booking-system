@@ -3,11 +3,12 @@ header > h1 {
 	font-size: 24px;
 }
 
-form > select {
-	
+form > label[for="password_input"] {
+	font-family: Verdana;
+	font-size: 12px;
 }
 
 p[id="success"] {
 	font-family: Verdana;
-	font-size: 10px;
+	font-size: 12px;
 }

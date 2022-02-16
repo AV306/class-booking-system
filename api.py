@@ -1,6 +1,6 @@
 import json;
 from flask import render_template;
-from numpy import inf;
+
 
 def retrieve( args ):
 	"""Retrieve data from the sever."""
