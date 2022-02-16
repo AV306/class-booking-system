@@ -16,6 +16,9 @@ def retrieve( args ):
 	data = {"total": 0, "returned": 0, "data":[]};
 	with open( "records.nsj", "r" ) as records:
 		for line in records: # fill the dict
+			data['total'] += 1;
+			if data['returned'] == number:
+				break;
 			
 			linedata = json.loads( line.strip() ); # parse data to dict
 
@@ -23,8 +26,6 @@ def retrieve( args ):
 				# check if the line is for the given person
 				data['data'].append( linedata );
 				data['returned'] += 1;
-
-			data['total'] += 1;
 
 	return data;
 
