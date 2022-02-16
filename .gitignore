@@ -1,5 +1,7 @@
 # replit
 .replit
+poetry.lock
+pyproject.toml
 
 # python
 venv/
