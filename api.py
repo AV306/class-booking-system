@@ -14,23 +14,31 @@ def retrieve( args ):
 		number = -1; # -1 tells it to do everything
 
 	data = {"total": 0, "returned": 0, "data":[]};
-	with open( "records.nsj", "a+" ) as records:
+
+	try:
+		records = open( "records.nsj", "r" );
+	except FileNotFoundError:
+		# file not found, create it
+		records = open( "records.nsj", "w" );
+	else:
 		for line in reversed(records.readlines()): # fill the dict ( We need to read it backwards :( )
-			# O(n) complexity...
+				# O(n) complexity...
 			
-			data['total'] += 1;
+				data['total'] += 1;
 		
-			if data['returned'] == number:
-				break;
+				if data['returned'] == number:
+					break;
 			
-			linedata = json.loads( line.strip() ); # parse data to dict
+				linedata = json.loads( line.strip() ); # parse data to dict
 
-			if name in linedata['name'].lower():
-				# check if the line is for the given person
-				data['data'].append( linedata );
-				data['returned'] += 1;
+				if name in linedata['name'].lower():
+					# check if the line is for the given person
+					data['data'].append( linedata );
+					data['returned'] += 1;
 
-	return data;
+		records.close();
+		return data;
+			
 
 						
 

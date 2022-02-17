@@ -1,0 +1,30 @@
+<!-- Jinja2 Template -->
+<!DOCTYPE html>
+<html lang=en>
+  <meta charset="utf-8">
+
+	<head>
+		<link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='styles/index.css') }}">
+		<title>2J Booking System</title>
+	<head>
+	
+	<body>		
+		<header>
+			<h1>{{ error }}</h1>
+
+			{% if error == 404 %}
+			<h1>Page not found</h1>
+			{% endif %}
+
+			{% if error == 500 %}
+			<h1>Internal server error</h1>
+			{% endif %}
+		</header>
+
+		<nav>
+			<a href="/">Main Page</a>
+			<a href="/data">Data Table</a>
+			<a href="/api">API</a>
+		</nav>
+	</body>
+</html> 

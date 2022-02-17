@@ -36,3 +36,12 @@ def onDataGet():
 	# format the data into a human-readable format.
 
 	return render_template( "data_table.html", data=data );
+
+
+@app.errorhandler(404)
+def notFound( error ):
+	return render_template( "errors/error.html", error=404 ), 404
+
+@app.errorhandler(500)
+def serverError( error ):
+	return render_template( "errors/error.html", error=500 ), 500
