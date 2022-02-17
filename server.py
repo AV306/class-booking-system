@@ -1,7 +1,6 @@
 from flask import Flask;
 from flask import request;
 from flask import render_template;
-import json;
 import api;
 
 app = Flask(__name__);
@@ -22,9 +21,12 @@ def onIndexGetOrPost():
 		return api.send( name, reason, details, password );
 
 
-@app.route('/data', methods=['GET'])
-def onDataGet():
+@app.route('/api', methods=['GET'])
+def onApiGet():
 	"""Handle GET requests to the data route."""
 	return api.retrieve( request.args );
 
-	
+@app.route('/data', methods=['GET'])
+def onDataGet():
+	"""Return a human-readable version of the api data."""
+	pass

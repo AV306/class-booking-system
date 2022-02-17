@@ -15,8 +15,11 @@ def retrieve( args ):
 
 	data = {"total": 0, "returned": 0, "data":[]};
 	with open( "records.nsj", "r" ) as records:
-		for line in records: # fill the dict
+		for line in reversed(records.readlines()): # fill the dict ( We need to read it backwards :( )
+			# O(n) complexity...
+			
 			data['total'] += 1;
+		
 			if data['returned'] == number:
 				break;
 			
@@ -33,7 +36,7 @@ def retrieve( args ):
 
 
 def send( name, reason, details, password ):
-	"""Send data to the server."""
+	"""Send data to the server. TODO: Write to file start"""
 	with open( "secrets.json", "r" ) as secrets:
 		secret = json.load( secrets )['password'];
 		

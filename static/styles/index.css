@@ -1,14 +1,14 @@
 header > h1 {
 	font-family: Verdana;
-	font-size: 24px;
+	font-size: 32px;
 }
 
-form > label[for="password_input"] {
+form > label {
 	font-family: Verdana;
-	font-size: 14px;
+	font-size: 16px;
 }
 
-p[id="success"] {
+p {
 	font-family: Verdana;
-	font-size: 14px;
+	font-size: 16px;
 }
