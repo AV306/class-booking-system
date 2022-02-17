@@ -26,7 +26,13 @@ def onApiGet():
 	"""Handle GET requests to the data route."""
 	return api.retrieve( request.args );
 
+
 @app.route('/data', methods=['GET'])
 def onDataGet():
 	"""Return a human-readable version of the api data."""
-	pass
+	# retrieve the api data.
+	data = api.retrieve( request.args );
+
+	# format the data into a human-readable format.
+
+	return render_template( "data_table.html", data=data );

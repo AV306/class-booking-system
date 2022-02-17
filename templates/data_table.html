@@ -1,0 +1,49 @@
+<!-- Jinja2 Template -->
+<!DOCTYPE html>
+<html lang=en>
+  <meta charset="utf-8">
+
+	<head>
+		<link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='styles/data_table.css') }}">
+		<title>2J Booking System</title>
+	<head>
+	
+	<body>		
+		<header>
+			<h1>2J Offense Recording System: Data</h1>
+		</header>
+
+		<nav>
+			<a href="/">Main Page</a>
+			<a href="/data">Data Table</a>
+			<a href="/api">API</a>
+		</nav>
+
+
+		<div class="container">			
+			<button id="refresh" onclick="">Refresh Data</button>
+			
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Timestamp</th>
+						<th>Name</th>
+						<th>Reason</th>
+						<th>Details</th>
+					</tr>
+				</thead>
+				<tbody id="data">
+					{% for record in data['data'] %}
+					<tr>
+						<td>Not recorded</td>
+						<td>{{ record['name'] }}</td>
+						<td>{{ record['reason'] }}</td>
+						<td>{{ record['details'] }}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		
+	</body>
+</html>
