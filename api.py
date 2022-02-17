@@ -14,7 +14,7 @@ def retrieve( args ):
 		number = -1; # -1 tells it to do everything
 
 	data = {"total": 0, "returned": 0, "data":[]};
-	with open( "records.nsj", "r+" ) as records:
+	with open( "records.nsj", "a+" ) as records:
 		for line in reversed(records.readlines()): # fill the dict ( We need to read it backwards :( )
 			# O(n) complexity...
 			
