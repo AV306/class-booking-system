@@ -4,21 +4,13 @@
   <meta charset="utf-8">
 
 	<head>
-		<link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='styles/index.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='styles/error.css') }}">
 		<title>2J Booking System</title>
 	<head>
 	
 	<body>		
 		<header>
-			<h1>{{ error }}</h1>
-
-			{% if error == 404 %}
-			<h1>Page not found</h1>
-			{% endif %}
-
-			{% if error == 500 %}
-			<h1>Internal server error</h1>
-			{% endif %}
+			<h3>{{ error }}</h3>
 		</header>
 
 		<nav>

@@ -52,6 +52,6 @@ def send( name, reason, details, password ):
 		with open( "records.nsj", "a" ) as records:
 			records.write( json.dumps({"name": name, "reason": reason, "details": details}) + "\n" );
 
-		return render_template( "index.html", auth=True );
+		return True;
 
-	else: return render_template( "index.html", auth=False );
+	else: return False;

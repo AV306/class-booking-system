@@ -18,7 +18,7 @@ def onIndexGetOrPost():
 		reason = request.form["reason_input"];
 		details = request.form["details_input"];
 		password = request.form["password_input"];
-		return api.send( name, reason, details, password );
+		return render_template( "index.html", auth=api.send( name, reason, details, password ) );
 
 
 @app.route('/api', methods=['GET'])
@@ -40,8 +40,8 @@ def onDataGet():
 
 @app.errorhandler(404)
 def notFound( error ):
-	return render_template( "errors/error.html", error=404 ), 404
+	return render_template( "errors/error.html", error=error ), 404
 
 @app.errorhandler(500)
 def serverError( error ):
-	return render_template( "errors/error.html", error=500 ), 500
+	return render_template( "errors/error.html", error=error ), 500
