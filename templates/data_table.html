@@ -37,7 +37,7 @@
 				<tbody id="data">
 					{% for record in data['data'] %}
 					<tr>
-						<td>Not recorded</td>
+						<td>{{ record['timestamp'] }}</td>
 						<td>{{ record['name'] }}</td>
 						<td>{{ record['reason'] }}</td>
 						<td>{{ record['details'] }}</td>

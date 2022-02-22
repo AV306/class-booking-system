@@ -1,4 +1,5 @@
 import json;
+import datetime;
 from flask import render_template;
 
 
@@ -46,12 +47,13 @@ def retrieve( args ):
 
 def send( name, reason, details, password ):
 	"""Send data to the server. TODO: Write to file start"""
+	# FIXME: Sphagett moment
 	with open( "secrets.json", "r" ) as secrets:
 		secret = json.load( secrets )['password'];
 		
 	if password == secret: # NOT SECURE TODO: Implement hashing
 		with open( "records.nsj", "a" ) as records:
-			records.write( json.dumps({"name": name, "reason": reason, "details": details}) + "\n" );
+			records.write( json.dumps({"timestamp": str(datetime.datetime.now()), "name": name, "reason": reason, "details": details}) + "\n" );
 
 		return True;
 
