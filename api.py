@@ -27,14 +27,15 @@ def retrieve( args ):
 				data['total'] += 1;
 		
 				if data['returned'] == number:
-					break;
-			
-				linedata = json.loads( line.strip() ); # parse data to dict
+					pass;
+					
+				else:
+					linedata = json.loads( line.strip() ); # parse data to dict
 
-				if name in linedata['name'].lower():
-					# check if the line is for the given person
-					data['data'].append( linedata );
-					data['returned'] += 1;
+					if name in linedata['name'].lower():
+						# check if the line is for the given person
+						data['data'].append( linedata );
+						data['returned'] += 1;
 
 		records.close();
 		return data;
