@@ -1,5 +1,4 @@
 import json;
-import datetime;
 from flask import render_template;
 
 
@@ -8,6 +7,7 @@ def retrieve( args ):
 	# args is a multi_dict :(
 	name = str(args.get('name', '')).lower(); # try to get the name of person
 	number = 0;
+	reason = str(args.get('reason', '')).lower();
 
 	try:
 		number = int(args.get('max', '')); # try to get the max number of data units (May throw exception)
@@ -33,7 +33,7 @@ def retrieve( args ):
 				else:
 					linedata = json.loads( line.strip() ); # parse data to dict
 
-					if name in linedata['name'].lower():
+					if name in linedata['name'].lower() or reason in linedata['reason'].lower():
 						# check if the line is for the given person
 						data['data'].append( linedata );
 						data['returned'] += 1;
@@ -47,13 +47,12 @@ def retrieve( args ):
 
 def send( name, reason, details, password ):
 	"""Send data to the server. TODO: Write to file start"""
-	# FIXME: Sphagett moment
 	with open( "secrets.json", "r" ) as secrets:
 		secret = json.load( secrets )['password'];
 		
 	if password == secret: # NOT SECURE TODO: Implement hashing
 		with open( "records.nsj", "a" ) as records:
-			records.write( json.dumps({"timestamp": str(datetime.datetime.now()), "name": name, "reason": reason, "details": details}) + "\n" );
+			records.write( json.dumps({"name": name, "reason": reason, "details": details}) + "\n" );
 
 		return True;
 
