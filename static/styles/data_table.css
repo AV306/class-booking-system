@@ -37,6 +37,12 @@ nav {
 	background: #bbbbbb
 }
 
+footer {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 20px;
+	color: #aaaaaa;
+}
+
 /*nav > a {
 	color: #000000;
 }*/

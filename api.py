@@ -1,5 +1,5 @@
+import datetime;
 import json;
-from flask import render_template;
 
 
 def retrieve( args ):
@@ -52,7 +52,7 @@ def send( name, reason, details, password ):
 		
 	if password == secret: # NOT SECURE TODO: Implement hashing
 		with open( "records.nsj", "a" ) as records:
-			records.write( json.dumps({"name": name, "reason": reason, "details": details}) + "\n" );
+			records.write( json.dumps({"timestamp": str(datetime.datetime.now().strftime("%m-%d-%Y %H:%M:%S")), "name": name, "reason": reason, "details": details}) + "\n" );
 
 		return True;
 
