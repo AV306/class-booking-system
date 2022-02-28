@@ -31,12 +31,15 @@ def retrieve( args ):
 					pass;
 					
 				else:
-					linedata = json.loads( line.strip() ); # parse data to dict
-
-					if name in linedata['name'].lower() and reason in linedata['reason'].lower():
-						# check if the line is for the given person
-						data['data'].append( linedata );
-						data['returned'] += 1;
+					try: 
+						linedata = json.loads( line.strip() ); # parse data to dict
+					except:
+						pass;
+					else:
+						if name in linedata['name'].lower() and reason in linedata['reason'].lower():
+							# check if the line is for the given person
+							data['data'].append( linedata );
+							data['returned'] += 1;
 
 		records.close();
 		return data;
